@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/clients/Customer.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/clients/Person.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/demo/Hello.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/demo/SimulatorService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/inventory/InventoryImpl.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/inventory/RentableState.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/Item.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/Movie.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/MovieType.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/RentableItem.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/PriceType.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/ResultParserService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/SimpleBonusPointsService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/SimplePriceCalculatorService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/SimpleTimeService.java" charset="windows-1252" />
+  </component>
+</project>
