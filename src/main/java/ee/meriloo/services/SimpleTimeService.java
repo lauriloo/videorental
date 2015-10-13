@@ -2,6 +2,7 @@ package ee.meriloo.services;
 
 import ee.meriloo.items.Movie;
 import ee.meriloo.services.Interfaces.TimeService;
+import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
 /**
  * Created by Lauri on 11.10.2015.
  */
+@Service
 public class SimpleTimeService implements TimeService {
 
 

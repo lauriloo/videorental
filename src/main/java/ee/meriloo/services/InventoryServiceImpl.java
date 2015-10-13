@@ -5,6 +5,7 @@ import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.InventoryService;
 import ee.meriloo.services.enums.RentableState;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by Lauri on 09.10.2015.
  */
+@Service
 public class InventoryServiceImpl implements InventoryService {
 
     private List<Movie> movies = new LinkedList<Movie>();

@@ -5,10 +5,12 @@ import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.PriceCalculatorService;
 import ee.meriloo.services.enums.PriceType;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Lauri on 10.10.2015.
  */
+@Service
 public class SimplePriceCalculatorService implements PriceCalculatorService {
 
 

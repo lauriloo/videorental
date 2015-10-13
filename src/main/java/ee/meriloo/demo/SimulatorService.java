@@ -3,6 +3,7 @@ package ee.meriloo.demo;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.SimpleTimeService;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by Lauri on 11.10.2015.
  */
+@Component
 public class SimulatorService {
 
 

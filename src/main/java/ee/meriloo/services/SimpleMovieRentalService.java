@@ -8,16 +8,21 @@ import ee.meriloo.items.Movie;
 import ee.meriloo.services.Interfaces.BonuspointsService;
 import ee.meriloo.services.Interfaces.MovieRentalService;
 import ee.meriloo.transaction.TransactionType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 /**
  * Created by Lauri on 12.10.2015.
  */
+@Service
 public class SimpleMovieRentalService implements MovieRentalService {
 
 
-    BonuspointsService bonusPointsService = new SimpleBonusPointsService();
+    @Autowired
+    BonuspointsService bonusPointsService;
+
     TimeService timeService = new SimpleTimeService();
 
     @Override

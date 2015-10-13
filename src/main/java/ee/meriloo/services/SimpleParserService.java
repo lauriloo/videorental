@@ -4,12 +4,14 @@ import ee.meriloo.items.Movie;
 import ee.meriloo.services.Interfaces.PriceCalculatorService;
 import ee.meriloo.services.Interfaces.ParserService;
 import ee.meriloo.services.Interfaces.TimeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Lauri on 11.10.2015.
  */
+@Service
 public class SimpleParserService implements ParserService {
 
     private PriceCalculatorService priceCalculatorService = new SimplePriceCalculatorService();

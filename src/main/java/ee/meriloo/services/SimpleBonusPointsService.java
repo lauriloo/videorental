@@ -4,10 +4,12 @@ import ee.meriloo.clients.BonusPointable;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.BonuspointsService;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Lauri on 11.10.2015.
  */
+@Service
 public class SimpleBonusPointsService implements BonuspointsService {
 
     private static final int DEFAULT_BONUS_POINTS = 1;
