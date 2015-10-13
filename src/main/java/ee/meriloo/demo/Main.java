@@ -1,7 +1,10 @@
 package ee.meriloo.demo;
 
 import ee.meriloo.items.Movie;
+import ee.meriloo.services.Interfaces.InventoryService;
 import ee.meriloo.services.Interfaces.ParserService;
+import ee.meriloo.services.InventoryServiceImpl;
+import ee.meriloo.services.SimpleParserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,19 +22,22 @@ public class Main {
     public ParserService resultParser;
     @Autowired
     SimulatorService simulatorService;
+    @Autowired
+    InventoryService inventoryService;
 
 
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        Main p = context.getBean(Main.class);
-        p.start(args);
+        Main main = context.getBean(Main.class);
+        //main.start();
+        main.inventoryTest();
     }
 
 
 
-    private void start(String[] args) {
+    private void start() {
         System.out.println("hello!");
 
         List<Movie> movies;
@@ -40,5 +46,20 @@ public class Main {
         System.out.println();
         movies = simulatorService.generateMovieDB2();
         System.out.println(resultParser.parseLateReturns(movies));
+    }
+
+    private void inventoryTest(){
+        ParserService parserService = new SimpleParserService();
+        SimulatorService simulatorService = new SimulatorService();
+
+        List<Movie> movies = null;
+
+        movies = inventoryService.listAllMovies();
+        System.out.println("Empty movie list: "+parserService.parseListOfMovies(movies));
+
+        movies = simulatorService.generateMovieDB();
+        System.out.println("Generated Movie DB1: \n"+parserService.parseListOfMovies(movies));
+
+
     }
 }
