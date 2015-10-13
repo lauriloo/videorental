@@ -1,9 +1,9 @@
-package ee.meriloo.service;
+package ee.meriloo.services;
 
 import ee.meriloo.clients.BonusPointable;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
-import ee.meriloo.service.Interface.BonuspointsService;
+import ee.meriloo.services.Interfaces.BonuspointsService;
 
 /**
  * Created by Lauri on 11.10.2015.

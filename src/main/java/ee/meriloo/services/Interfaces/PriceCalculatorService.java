@@ -1,7 +1,6 @@
-package ee.meriloo.service.Interface;
+package ee.meriloo.services.Interfaces;
 
 import ee.meriloo.items.Movie;
-import ee.meriloo.items.MovieType;
 
 /**
  * Created by Lauri on 12.10.2015.

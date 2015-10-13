@@ -1,19 +1,21 @@
-package ee.meriloo.service;
+package ee.meriloo.services;
 
 import ee.meriloo.items.Movie;
-import ee.meriloo.service.Interface.PriceCalculatorService;
-import ee.meriloo.service.Interface.TimeService;
+import ee.meriloo.services.Interfaces.PriceCalculatorService;
+import ee.meriloo.services.Interfaces.ParserService;
+import ee.meriloo.services.Interfaces.TimeService;
 
 import java.util.List;
 
 /**
  * Created by Lauri on 11.10.2015.
  */
-public class ResultParserService {
+public class SimpleParserService implements ParserService {
 
     private PriceCalculatorService priceCalculatorService = new SimplePriceCalculatorService();
     private TimeService timeService = new SimpleTimeService();
 
+    @Override
     public String parseRentalResult(Movie movie){
 
         String output = movie.getTitle() + "(" + movie.getMovieType().getType() + ") " +
@@ -22,6 +24,7 @@ public class ResultParserService {
         return output;
     }
 
+    @Override
     public String parseLateReturn(Movie movie){
 
         String output = movie.getTitle() + "(" + movie.getMovieType().getType() + ") " +
@@ -30,6 +33,7 @@ public class ResultParserService {
         return output;
     }
 
+    @Override
     public String parseRentResults(List<Movie> movies){
        StringBuilder output = new StringBuilder();
         int totalPrice = 0;
@@ -42,6 +46,7 @@ public class ResultParserService {
         return output.toString();
     }
 
+    @Override
     public String parseLateReturns(List<Movie> movies){
         StringBuilder output = new StringBuilder();
         int totalLatePrice = 0;
@@ -53,5 +58,27 @@ public class ResultParserService {
         }
         output.append("Total late charge: " + totalLatePrice + " EUR");
         return output.toString();
+    }
+
+    @Override
+    public String parseListOfMovies(List<Movie> movies) {
+        StringBuilder output = new StringBuilder();
+        for (Movie movie : movies){
+            output.append(parseMovie(movie));
+            output.append("\n");
+        }
+        return output.toString();
+    }
+
+    @Override
+    public String parseMovie(Movie movie){
+        String output = "Title: "+ movie.getTitle() + " \n"+
+                "type: "+ movie.getMovieType().getType() + "\n"+
+                "state: "+ movie.getRentableState().getState() + "\n"+
+                "startTime: "+ movie.getRentBeginTime() + "\n"+
+                "endTime: "+ movie.getRentEndTime() + "\n"+
+                "rentoutTime: "+ movie.getRentOutTimeInDays() + "\n"+
+                "customer: "+ movie.getItemHolder()+ "\n";
+        return output;
     }
 }

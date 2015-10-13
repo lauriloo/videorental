@@ -2,7 +2,7 @@ package ee.meriloo.demo;
 
 
 import ee.meriloo.items.Movie;
-import ee.meriloo.service.ResultParserService;
+import ee.meriloo.services.SimpleParserService;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Hello {
 
     public static void main(String[] args){
 
-        ResultParserService resultParser = new ResultParserService();
+        SimpleParserService resultParser = new SimpleParserService();
         SimulatorService simulatorService = new SimulatorService();
 
         System.out.println("hello!");

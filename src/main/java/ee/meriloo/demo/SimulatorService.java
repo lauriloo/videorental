@@ -2,7 +2,7 @@ package ee.meriloo.demo;
 
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
-import ee.meriloo.service.SimpleTimeService;
+import ee.meriloo.services.SimpleTimeService;
 
 import java.util.Date;
 import java.util.LinkedList;

@@ -6,16 +6,16 @@
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/clients/Person.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/demo/Hello.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/demo/SimulatorService.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/inventory/InventoryImpl.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/inventory/RentableState.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/Item.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/Movie.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/MovieType.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/items/RentableItem.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/PriceType.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/ResultParserService.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/SimpleBonusPointsService.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/SimplePriceCalculatorService.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/service/SimpleTimeService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/InventoryServiceImpl.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/SimpleBonusPointsService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/SimpleParserService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/SimplePriceCalculatorService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/SimpleTimeService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/enums/PriceType.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/ee/meriloo/services/enums/RentableState.java" charset="windows-1252" />
   </component>
 </project>

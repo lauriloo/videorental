@@ -1,4 +1,4 @@
-package ee.meriloo.service.Interface;
+package ee.meriloo.services.Interfaces;
 
 import ee.meriloo.items.Movie;
 

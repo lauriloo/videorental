@@ -1,12 +1,12 @@
-package ee.meriloo.service;
+package ee.meriloo.services;
 
 import ee.meriloo.clients.Customer;
-import ee.meriloo.inventory.RentableState;
-import ee.meriloo.service.Interface.TimeService;
+import ee.meriloo.services.Interfaces.TimeService;
+import ee.meriloo.services.enums.RentableState;
 import ee.meriloo.transaction.Transaction;
 import ee.meriloo.items.Movie;
-import ee.meriloo.service.Interface.BonuspointsService;
-import ee.meriloo.service.Interface.MovieRentalService;
+import ee.meriloo.services.Interfaces.BonuspointsService;
+import ee.meriloo.services.Interfaces.MovieRentalService;
 import ee.meriloo.transaction.TransactionType;
 
 import java.util.Date;

@@ -1,15 +1,18 @@
-package ee.meriloo.inventory;
+package ee.meriloo.services;
 
 
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
+import ee.meriloo.services.Interfaces.InventoryService;
+import ee.meriloo.services.enums.RentableState;
+
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Lauri on 09.10.2015.
  */
-public class InventoryImpl implements Inventory{
+public class InventoryServiceImpl implements InventoryService {
 
     private List<Movie> movies = new LinkedList<Movie>();
 

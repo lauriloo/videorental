@@ -1,4 +1,4 @@
-package ee.meriloo.inventory;
+package ee.meriloo.services.Interfaces;
 
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Lauri on 12.10.2015.
  */
-public interface Inventory {
+public interface InventoryService {
 
     public List<Movie> addMovie(Movie movie);
 

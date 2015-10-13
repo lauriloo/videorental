@@ -1,9 +1,10 @@
-package ee.meriloo.service;
+package ee.meriloo.services;
 
 
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
-import ee.meriloo.service.Interface.PriceCalculatorService;
+import ee.meriloo.services.Interfaces.PriceCalculatorService;
+import ee.meriloo.services.enums.PriceType;
 
 /**
  * Created by Lauri on 10.10.2015.

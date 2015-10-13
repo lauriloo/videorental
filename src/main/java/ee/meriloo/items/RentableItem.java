@@ -2,7 +2,7 @@ package ee.meriloo.items;
 
 
 import ee.meriloo.clients.Customer;
-import ee.meriloo.inventory.RentableState;
+import ee.meriloo.services.enums.RentableState;
 
 import java.util.Date;
 

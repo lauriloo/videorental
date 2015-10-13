@@ -1,7 +1,7 @@
-package ee.meriloo.service;
+package ee.meriloo.services;
 
 import ee.meriloo.items.Movie;
-import ee.meriloo.service.Interface.TimeService;
+import ee.meriloo.services.Interfaces.TimeService;
 
 import java.util.Calendar;
 import java.util.Date;
