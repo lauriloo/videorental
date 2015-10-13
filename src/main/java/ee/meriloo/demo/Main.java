@@ -19,7 +19,7 @@ import java.util.List;
 public class Main {
 
     @Autowired
-    public ParserService resultParser;
+    public ParserService parserService;
     @Autowired
     SimulatorService simulatorService;
     @Autowired
@@ -42,18 +42,15 @@ public class Main {
 
         List<Movie> movies;
         movies = simulatorService.generateMovieDB();
-        System.out.println(resultParser.parseRentResults(movies));
+        System.out.println(parserService.parseRentResults(movies));
         System.out.println();
         movies = simulatorService.generateMovieDB2();
-        System.out.println(resultParser.parseLateReturns(movies));
+        System.out.println(parserService.parseLateReturns(movies));
     }
 
     private void inventoryTest(){
-        ParserService parserService = new SimpleParserService();
-        SimulatorService simulatorService = new SimulatorService();
 
         List<Movie> movies = null;
-
         movies = inventoryService.listAllMovies();
         System.out.println("Empty movie list: "+parserService.parseListOfMovies(movies));
 
