@@ -3,6 +3,7 @@ package ee.meriloo.demo;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.SimpleTimeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -16,8 +17,8 @@ import java.util.List;
 public class SimulatorService {
 
 
-    //MovieRentalService movieRentalService = new MovieRentalService();
-    SimpleTimeService timeService = new SimpleTimeService();
+    @Autowired
+    SimpleTimeService timeService;
 
     public List<Movie> generateMovieDB(){
         List<Movie> movieDB = new LinkedList<Movie>();

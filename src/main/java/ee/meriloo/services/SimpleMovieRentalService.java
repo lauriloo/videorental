@@ -21,9 +21,10 @@ public class SimpleMovieRentalService implements MovieRentalService {
 
 
     @Autowired
-    BonuspointsService bonusPointsService;
+    private BonuspointsService bonusPointsService;
 
-    TimeService timeService = new SimpleTimeService();
+    @Autowired
+    private TimeService timeService;
 
     @Override
     public Transaction rentAMovie(Movie movie, Customer customer, long days) {

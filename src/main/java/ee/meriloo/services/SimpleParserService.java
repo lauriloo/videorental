@@ -4,6 +4,7 @@ import ee.meriloo.items.Movie;
 import ee.meriloo.services.Interfaces.PriceCalculatorService;
 import ee.meriloo.services.Interfaces.ParserService;
 import ee.meriloo.services.Interfaces.TimeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,11 @@ import java.util.List;
 @Service
 public class SimpleParserService implements ParserService {
 
-    private PriceCalculatorService priceCalculatorService = new SimplePriceCalculatorService();
-    private TimeService timeService = new SimpleTimeService();
+    @Autowired
+    private PriceCalculatorService priceCalculatorService;
+
+    @Autowired
+    private TimeService timeService;
 
     @Override
     public String parseRentalResult(Movie movie){

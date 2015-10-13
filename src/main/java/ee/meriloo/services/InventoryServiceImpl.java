@@ -19,15 +19,7 @@ import java.util.List;
 public class InventoryServiceImpl implements InventoryService {
 
     @Autowired
-    Inventory inventory;
-
-    //private List<Movie> movies;
-
-
-
-    /*InventoryServiceImpl(){
-        this.movies = inventory.getMovies();
-    }*/
+    private Inventory inventory;
 
 
     @Override

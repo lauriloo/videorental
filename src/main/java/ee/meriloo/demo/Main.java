@@ -31,7 +31,7 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         Main main = context.getBean(Main.class);
-        //main.start();
+        main.start();
         main.inventoryTest();
     }
 
