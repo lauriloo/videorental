@@ -15,7 +15,9 @@ public interface InventoryService {
 
     public Movie changeType(Movie movie, MovieType newType);
 
-    public List<Movie> listAllMovies();
+    public List<Movie> getAllMovies();
 
-    public List<Movie> listAllMoviesInStore();
+    public List<Movie> getAllMoviesInStore();
+
+
 }

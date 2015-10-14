@@ -43,13 +43,13 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public List<Movie> listAllMovies() {
+    public List<Movie> getAllMovies() {
         List<Movie> movies = inventory.getMovies();
         return movies;
     }
 
     @Override
-    public List<Movie> listAllMoviesInStore() {
+    public List<Movie> getAllMoviesInStore() {
         List<Movie> movies = inventory.getMovies();
         List<Movie> moviesInStore = new LinkedList<Movie>();
         for(Movie movie : movies){
@@ -59,6 +59,8 @@ public class InventoryServiceImpl implements InventoryService {
         }
         return moviesInStore;
     }
+
+
 
 
 }
