@@ -13,11 +13,17 @@ public interface InventoryService {
 
     public Set<Movie> removeMovie(Movie movie);
 
+    public Movie getMovieFromInventory(Movie movie);
+
     public Movie changeType(Movie movie, MovieType newType);
+
+    public Set<Movie> changeMovieTypeInInventory(Movie movie, MovieType newType);
 
     public Set<Movie> getAllMovies();
 
     public Set<Movie> getAllMoviesInStore();
+
+    public Set<Movie> resetInventory();
 
 
 }

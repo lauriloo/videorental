@@ -27,6 +27,14 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public Set<Movie> addMovie(Movie movie) {
         Set<Movie> movies = inventory.getMovies();
+        // If Inventory already has this movie, do nothing.
+        if (movies.contains(movie)) {
+            for (Movie inventoryMovie : movies) {
+                if (inventoryMovie.equals(movie))
+                    return movies;
+            }
+        }
+        // If Inventory doesn't have this movie, add it.
         movies.add(movie);
         return movies;
     }
@@ -39,9 +47,28 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    public Movie getMovieFromInventory(Movie movie) {
+        Set<Movie> movies = inventory.getMovies();
+        if (movies.contains(movie)) {
+            for (Movie inventoryMovie : movies) {
+                if (inventoryMovie.equals(movie)) {
+                    return inventoryMovie;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Movie changeType(Movie movie, MovieType newType) {
         movie.setMovieType(newType);
         return movie;
+    }
+
+    @Override
+    public Set<Movie> changeMovieTypeInInventory(Movie movie, MovieType newType) {
+        this.getMovieFromInventory(movie).setMovieType(newType);
+        return inventory.getMovies();
     }
 
     @Override
@@ -63,6 +90,10 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
 
-
-
+    @Override
+    public Set<Movie> resetInventory() {
+        Set<Movie> newInventory = new HashSet<Movie>();
+        inventory.setMovies(newInventory);
+        return newInventory;
+    }
 }
