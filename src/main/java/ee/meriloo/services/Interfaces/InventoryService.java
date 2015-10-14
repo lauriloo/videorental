@@ -25,5 +25,7 @@ public interface InventoryService {
 
     public Set<Movie> resetInventory();
 
+    public Set<Movie> setInventory(Set<Movie> newInventory);
+
 
 }

@@ -96,4 +96,10 @@ public class InventoryServiceImpl implements InventoryService {
         inventory.setMovies(newInventory);
         return newInventory;
     }
+
+    @Override
+    public Set<Movie> setInventory(Set<Movie> newIventory) {
+        inventory.setMovies(newIventory);
+        return newIventory;
+    }
 }
