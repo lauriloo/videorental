@@ -47,4 +47,8 @@ public class Transaction {
     public Date getDate() {
         return date;
     }
+
+    public static List<Transaction> getTransactions() {
+        return transactions;
+    }
 }
