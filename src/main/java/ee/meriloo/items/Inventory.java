@@ -2,8 +2,7 @@ package ee.meriloo.items;
 
 import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Lauri on 13.10.2015.
@@ -11,18 +10,14 @@ import java.util.List;
 @Component
 public class Inventory {
 
-    private List<Movie> movies = new LinkedList<Movie>();
+    private Set<Movie> movies = new HashSet<Movie>();
 
 
-
-
-    public List<Movie> getMovies() {
+    public Set<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(Set<Movie> movies) {
         this.movies = movies;
     }
-
-
 }

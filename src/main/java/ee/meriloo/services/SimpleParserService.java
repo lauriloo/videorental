@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Lauri on 11.10.2015.
@@ -40,7 +41,7 @@ public class SimpleParserService implements ParserService {
     }
 
     @Override
-    public String parseRentResults(List<Movie> movies){
+    public String parseRentResults(Set<Movie> movies){
        StringBuilder output = new StringBuilder();
         int totalPrice = 0;
         for (Movie movie : movies){
@@ -53,7 +54,7 @@ public class SimpleParserService implements ParserService {
     }
 
     @Override
-    public String parseLateReturns(List<Movie> movies){
+    public String parseLateReturns(Set<Movie> movies){
         StringBuilder output = new StringBuilder();
         int totalLatePrice = 0;
         for (Movie movie : movies){
@@ -67,7 +68,7 @@ public class SimpleParserService implements ParserService {
     }
 
     @Override
-    public String parseListOfMovies(List<Movie> movies) {
+    public String parseListOfMovies(Set<Movie> movies) {
         StringBuilder output = new StringBuilder();
         for (Movie movie : movies){
             output.append(parseMovie(movie));

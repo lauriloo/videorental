@@ -6,9 +6,7 @@ import ee.meriloo.services.SimpleTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Lauri on 11.10.2015.
@@ -20,8 +18,8 @@ public class SimulatorService {
     @Autowired
     SimpleTimeService timeService;
 
-    public List<Movie> generateMovieDB(){
-        List<Movie> movieDB = new LinkedList<Movie>();
+    public Set<Movie> generateMovieDB(){
+        Set<Movie> movieDB = new HashSet<Movie>();
 
         movieDB.add(generateMovie("Matrix", MovieType.NEW_RELEASE, 1));
         movieDB.add(generateMovie("Spider man", MovieType.REGULAR, 5));
@@ -33,8 +31,8 @@ public class SimulatorService {
 
 
     //OverTimeDB
-    public List<Movie> generateMovieDB2(){
-        List<Movie> movieDB = new LinkedList<Movie>();
+    public Set<Movie> generateMovieDB2(){
+        Set<Movie> movieDB = new HashSet<Movie>();
 
         Movie movie1 = generateMovie("Matrix", MovieType.NEW_RELEASE, 1);
         Movie movie2 = generateMovie("Spider man", MovieType.REGULAR, 5);

@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Lauri on 13.10.2015.
@@ -43,7 +44,7 @@ public class Main {
     private void start() {
         System.out.println("hello!");
 
-        List<Movie> movies;
+        Set<Movie> movies;
         movies = simulatorService.generateMovieDB();
         System.out.println(parserService.parseRentResults(movies));
         System.out.println();
@@ -53,21 +54,22 @@ public class Main {
 
     private void inventoryTest(){
 
-        List<Movie> movies = null;
+        Set<Movie> movies = null;
         movies = inventoryService.getAllMovies();
         System.out.println("Empty movie list: "+parserService.parseListOfMovies(movies));
 
         movies = simulatorService.generateMovieDB();
-        System.out.println("Generated Movie DB1: \n"+parserService.parseListOfMovies(movies));
+        System.out.println("Generated Movie DB1: \n" + parserService.parseListOfMovies(movies));
 
 
     }
 
     private void addAMoviesToInventory(){
         Movie movie = new Movie("Matrix 11", MovieType.NEW_RELEASE);
-        List<Movie> movies = inventoryService.getAllMovies();
+        Set<Movie> movies = inventoryService.getAllMovies();
         System.out.println("Total number of movies: " + movies.size());
         System.out.println("Adding a movie \"" + movie.getTitle() + "\"");
+        inventoryService.addMovie(movie);
         inventoryService.addMovie(movie);
         System.out.println("Total number of movies: " + movies.size());
 
@@ -75,7 +77,7 @@ public class Main {
 
     private void removeAMovieFromInventory(){
         Movie movie = new Movie("Matrix 11", MovieType.NEW_RELEASE);
-        List<Movie> movies = inventoryService.getAllMovies();
+        Set<Movie> movies = inventoryService.getAllMovies();
         inventoryService.addMovie(movie);
         System.out.println("Total number of movies: " + movies.size());
         System.out.println("Removing a movie \"" + movie.getTitle() + "\"");
