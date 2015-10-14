@@ -15,6 +15,8 @@ public interface InventoryService {
 
     public Movie getMovieFromInventory(Movie movie);
 
+    public Movie getMovieFromInventory(String title);
+
     public Movie changeType(Movie movie, MovieType newType);
 
     public Set<Movie> changeMovieTypeInInventory(Movie movie, MovieType newType);

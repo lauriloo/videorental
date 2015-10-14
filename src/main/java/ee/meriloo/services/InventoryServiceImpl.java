@@ -60,6 +60,12 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    public Movie getMovieFromInventory(String title) {
+        Movie movie = new Movie(title, MovieType.UNKNOWN);
+        return getMovieFromInventory(movie);
+    }
+
+    @Override
     public Movie changeType(Movie movie, MovieType newType) {
         movie.setMovieType(newType);
         return movie;
