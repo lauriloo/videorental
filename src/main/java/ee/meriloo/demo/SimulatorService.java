@@ -1,8 +1,10 @@
 package ee.meriloo.demo;
 
+import ee.meriloo.clients.Customer;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.SimpleTimeService;
+import ee.meriloo.services.enums.RentableState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +20,7 @@ public class SimulatorService {
     @Autowired
     SimpleTimeService timeService;
 
-    public Set<Movie> generateMovieDB(){
+    public Set<Movie> generateMovieDB1(){
         Set<Movie> movieDB = new HashSet<Movie>();
 
         movieDB.add(generateMovie("Matrix", MovieType.NEW_RELEASE, 1));
@@ -49,6 +51,28 @@ public class SimulatorService {
         return movieDB;
     }
 
+    public Set<Movie> generateMovieDB3(){
+        Set<Movie> movieDB = new HashSet<Movie>();
+
+        movieDB.add(generateMovie("Matrix", MovieType.NEW_RELEASE, new Customer("John"), RentableState.RENTED_OUT));
+        movieDB.add(generateMovie("Spider man", MovieType.REGULAR));
+        movieDB.add(generateMovie("Spider man 2", MovieType.REGULAR));
+        movieDB.add(generateMovie("Put of Africa", MovieType.OLD_FILM));
+
+        return movieDB;
+    }
+
+    public Set<Movie> generateMovieDB4(){
+        Set<Movie> movieDB = new HashSet<Movie>();
+
+        movieDB.add(generateMovie("Matrix 11", MovieType.NEW_RELEASE));
+        movieDB.add(generateMovie("Spider man", MovieType.REGULAR));
+        movieDB.add(generateMovie("Spider man 2", MovieType.REGULAR));
+        movieDB.add(generateMovie("Put of Africa", MovieType.OLD_FILM));
+
+        return movieDB;
+    }
+
 
 
     private Movie generateMovie(String title, MovieType type, int daysFromNow){
@@ -61,6 +85,24 @@ public class SimulatorService {
         //movie.setRentEndTime(date);
         movie.setRentOutTimeInDays(daysFromNow);
 
+        return movie;
+    }
+
+    private Movie generateMovie(String title, MovieType type){
+        Movie movie = new Movie(title, type);
+        return movie;
+    }
+
+    private Movie generateMovie(String title, MovieType type, Customer customer){
+        Movie movie = new Movie(title, type);
+        movie.setItemHolder(customer);
+        return movie;
+    }
+
+    private Movie generateMovie(String title, MovieType type, Customer customer, RentableState state){
+        Movie movie = new Movie(title, type);
+        movie.setItemHolder(customer);
+        movie.setRentableState(state);
         return movie;
     }
 
