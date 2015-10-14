@@ -1,6 +1,7 @@
 package ee.meriloo.demo;
 
 import ee.meriloo.items.Movie;
+import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.InventoryService;
 import ee.meriloo.services.Interfaces.ParserService;
 import ee.meriloo.services.InventoryServiceImpl;
@@ -31,8 +32,10 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         Main main = context.getBean(Main.class);
-        main.start();
-        main.inventoryTest();
+        //main.start();
+        //main.inventoryTest();
+        main.addAMoviesToInventory();
+        main.removeAMovieFromInventory();
     }
 
 
@@ -51,7 +54,7 @@ public class Main {
     private void inventoryTest(){
 
         List<Movie> movies = null;
-        movies = inventoryService.listAllMovies();
+        movies = inventoryService.getAllMovies();
         System.out.println("Empty movie list: "+parserService.parseListOfMovies(movies));
 
         movies = simulatorService.generateMovieDB();
@@ -59,4 +62,25 @@ public class Main {
 
 
     }
+
+    private void addAMoviesToInventory(){
+        Movie movie = new Movie("Matrix 11", MovieType.NEW_RELEASE);
+        List<Movie> movies = inventoryService.getAllMovies();
+        System.out.println("Total number of movies: " + movies.size());
+        System.out.println("Adding a movie \"" + movie.getTitle() + "\"");
+        inventoryService.addMovie(movie);
+        System.out.println("Total number of movies: " + movies.size());
+
+    }
+
+    private void removeAMovieFromInventory(){
+        Movie movie = new Movie("Matrix 11", MovieType.NEW_RELEASE);
+        List<Movie> movies = inventoryService.getAllMovies();
+        inventoryService.addMovie(movie);
+        System.out.println("Total number of movies: " + movies.size());
+        System.out.println("Removing a movie \"" + movie.getTitle() + "\"");
+        inventoryService.removeMovie(movie);
+        System.out.println("Total number of movies: " + movies.size());
+    }
+
 }
