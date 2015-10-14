@@ -66,11 +66,13 @@ public class Main {
 
     private void addAMoviesToInventory(){
         Movie movie = new Movie("Matrix 11", MovieType.NEW_RELEASE);
+        Movie movie2 = new Movie("Matrix 11", MovieType.NEW_RELEASE);
         Set<Movie> movies = inventoryService.getAllMovies();
         System.out.println("Total number of movies: " + movies.size());
         System.out.println("Adding a movie \"" + movie.getTitle() + "\"");
         inventoryService.addMovie(movie);
         inventoryService.addMovie(movie);
+        inventoryService.addMovie(movie2);
         System.out.println("Total number of movies: " + movies.size());
 
     }

@@ -7,6 +7,7 @@ public class Movie extends RentableItem {
 
     private String title;
     private MovieType movieType;
+    private int releaseYear;
 
     public Movie(String title, MovieType movieType){
         super();
@@ -29,5 +30,32 @@ public class Movie extends RentableItem {
 
     public void setMovieType(MovieType movieType) {
         this.movieType = movieType;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null)                return false;
+        if(!(o instanceof Movie)) return false;
+
+        Movie other = (Movie) o;
+        if(! this.title.equals(other.title)) return false;
+        if(this.releaseYear != other.releaseYear)      return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode(){
+        return (int) title.hashCode()
+                 * releaseYear
+                    ;
     }
 }
