@@ -1,5 +1,6 @@
 package ee.meriloo.services.Interfaces;
 
+import ee.meriloo.clients.Customer;
 import ee.meriloo.items.Movie;
 import ee.meriloo.transaction.RentalSession;
 
@@ -26,6 +27,8 @@ public interface ParserService {
     public String parseMovie(Movie movie);
 
     public String parsePaidWithBonusPoints(Set<Movie> movies);
+
+    public String parseBonusPoints(Customer customer);
 
 
 }

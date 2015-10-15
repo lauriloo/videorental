@@ -1,5 +1,6 @@
 package ee.meriloo.services;
 
+import ee.meriloo.clients.Customer;
 import ee.meriloo.items.Movie;
 import ee.meriloo.services.Interfaces.PriceCalculatorService;
 import ee.meriloo.services.Interfaces.ParserService;
@@ -145,12 +146,12 @@ public class SimpleParserService implements ParserService {
 
     @Override
     public String parseMovie(Movie movie){
-        String output = "Title: "+ movie.getTitle() + " \n"+
-                "type: "+ movie.getMovieType().getType() + "\n"+
-                "state: "+ movie.getRentableState().getState() + "\n"+
-                "startTime: "+ movie.getRentBeginTime() + "\n"+
-                "endTime: "+ movie.getRentEndTime() + "\n"+
-                "rentoutTime: "+ movie.getRentOutTimeInDays() + "\n"+
+        String output = "Title: "+ movie.getTitle() + " , "+
+                "type: "+ movie.getMovieType().getType() + " , "+
+                "state: "+ movie.getRentableState().getState() + " , "+
+                "startTime: "+ movie.getRentBeginTime() + " , "+
+                "endTime: "+ movie.getRentEndTime() + " , "+
+                "rentoutTime: "+ movie.getRentOutTimeInDays() + " , "+
                 "customer: "+ movie.getItemHolder()+ "\n";
         return output;
     }
@@ -166,14 +167,22 @@ public class SimpleParserService implements ParserService {
         return output.toString();
     }
 
+    @Override
+    public String parseBonusPoints(Customer customer) {
+        long bonuspoints = customer.getBonusPoints();
+        String output = "Bonus points: " + bonuspoints;
+        return output;
+    }
+
     private String parsePaidWithBonusPoints(Movie movie) {
         String output =
                 "-------------------------------------------------------------\n" +
                         "Paid with Bonuspoints\n" +
                         "--------------------------------------------------------------\n\n" +
                        movie.getTitle() + "(" + movie.getMovieType().getType() + ") " + movie.getRentOutTimeInDays() +
-                        "days (Paid with " + SimpleBonusPointsService.CHARGEABLE_BONUS_POINTS + ")\n" +
-                        "Total price : 0 EUR";
+                        " days (Paid with " + SimpleBonusPointsService.CHARGEABLE_BONUS_POINTS + ")\n" +
+                        "Total price : 0 EUR\n\n" +
+                        "Remaining Bonus points " + movie.getItemHolder().getBonusPoints() ;
         return output;
     }
 }
