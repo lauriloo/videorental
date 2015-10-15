@@ -5,13 +5,11 @@ import ee.meriloo.items.Inventory;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.InventoryService;
-import ee.meriloo.services.enums.RentableState;
+import ee.meriloo.enums.RentableState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 /**

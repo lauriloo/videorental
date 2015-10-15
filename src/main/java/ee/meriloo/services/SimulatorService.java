@@ -3,8 +3,7 @@ package ee.meriloo.services;
 import ee.meriloo.clients.Customer;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
-import ee.meriloo.services.SimpleTimeService;
-import ee.meriloo.services.enums.RentableState;
+import ee.meriloo.enums.RentableState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package ee.meriloo.demo;
+package ee.meriloo.main;
 
 import ee.meriloo.services.Interfaces.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;

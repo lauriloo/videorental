@@ -4,7 +4,7 @@ package ee.meriloo.services;
 import ee.meriloo.items.Movie;
 import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.PriceCalculatorService;
-import ee.meriloo.services.enums.PriceType;
+import ee.meriloo.enums.PriceType;
 import org.springframework.stereotype.Service;
 
 /**

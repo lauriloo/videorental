@@ -1,4 +1,4 @@
-package ee.meriloo.services.enums;
+package ee.meriloo.enums;
 
 /**
  * Created by Lauri on 10.10.2015.

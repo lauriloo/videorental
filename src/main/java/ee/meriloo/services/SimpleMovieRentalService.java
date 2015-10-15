@@ -2,7 +2,7 @@ package ee.meriloo.services;
 
 import ee.meriloo.clients.Customer;
 import ee.meriloo.services.Interfaces.TimeService;
-import ee.meriloo.services.enums.RentableState;
+import ee.meriloo.enums.RentableState;
 import ee.meriloo.transaction.RentalSession;
 import ee.meriloo.transaction.Transaction;
 import ee.meriloo.items.Movie;
