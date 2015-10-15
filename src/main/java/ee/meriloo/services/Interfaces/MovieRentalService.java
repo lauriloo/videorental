@@ -1,6 +1,7 @@
 package ee.meriloo.services.Interfaces;
 
 import ee.meriloo.clients.Customer;
+import ee.meriloo.transaction.RentalSession;
 import ee.meriloo.transaction.Transaction;
 import ee.meriloo.items.Movie;
 
@@ -9,12 +10,16 @@ import ee.meriloo.items.Movie;
  */
 public interface MovieRentalService {
 
-    public Transaction rentAMovie(Movie movie, Customer customer, long days);
+    public RentalSession rentAMovie(Movie movie, Customer customer, long days, RentalSession rentalSession);
 
-    public Transaction rentAMovieAndPayWithBounusPoints(Movie movie, Customer customer, long days);
+    public RentalSession rentAMovieAndPayWithBounusPoints(Movie movie, Customer customer, long days, RentalSession rentalSession);
 
-    public Transaction returnAMovie(Movie movie);
+    public RentalSession returnAMovie(Movie movie, RentalSession rentalSession);
 
-    public Transaction returnAMovie(Movie movie, boolean overtimePaid);
+    public RentalSession returnAMovie(Movie movie, boolean overtimePaid, RentalSession rentalSession);
+
+    public RentalSession beginRentalSession();
+
+    public RentalSession finishRentalSession(RentalSession rentalSession);
 
 }

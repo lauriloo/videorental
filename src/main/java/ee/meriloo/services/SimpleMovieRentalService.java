@@ -3,6 +3,7 @@ package ee.meriloo.services;
 import ee.meriloo.clients.Customer;
 import ee.meriloo.services.Interfaces.TimeService;
 import ee.meriloo.services.enums.RentableState;
+import ee.meriloo.transaction.RentalSession;
 import ee.meriloo.transaction.Transaction;
 import ee.meriloo.items.Movie;
 import ee.meriloo.services.Interfaces.BonuspointsService;
@@ -27,9 +28,9 @@ public class SimpleMovieRentalService implements MovieRentalService {
     private TimeService timeService;
 
     @Override
-    public Transaction rentAMovie(Movie movie, Customer customer, long days) {
+    public RentalSession rentAMovie(Movie movie, Customer customer, long days, RentalSession rentalSession) {
 
-        if(movie.getRentableState().isRentable()){
+        if(movie != null && movie.getRentableState().isRentable()){
 
             movie.setRentBeginTime(new Date());
             movie.setRentEndTime(null);
@@ -38,14 +39,14 @@ public class SimpleMovieRentalService implements MovieRentalService {
             bonusPointsService.addBonusPoints(customer, movie);
             movie.setRentableState(RentableState.RENTED_OUT);
 
-            return new Transaction(customer, movie, TransactionType.RENTAMOVIE, true);
+            return rentalSession.addTransaction(new Transaction(customer, movie, TransactionType.RENTAMOVIE, true));
         }
 
-        return new Transaction(customer, movie, TransactionType.RENTAMOVIE, false);
+        return rentalSession.addTransaction(new Transaction(customer, movie, TransactionType.RENTAMOVIE_MOVIE_NA, false));
     }
 
     @Override
-    public Transaction rentAMovieAndPayWithBounusPoints(Movie movie, Customer customer, long days) {
+    public RentalSession rentAMovieAndPayWithBounusPoints(Movie movie, Customer customer, long days, RentalSession rentalSession) {
         if(movie.getRentableState().isRentable() && bonusPointsService.isBonusPointsChargeable(customer, movie)){
 
             movie.setRentBeginTime(new Date());
@@ -55,25 +56,38 @@ public class SimpleMovieRentalService implements MovieRentalService {
             bonusPointsService.useBonusPoints(customer, movie);
             movie.setRentableState(RentableState.RENTED_OUT);
 
-            return new Transaction(customer, movie, TransactionType.RENTAMOVIEANDPAYWITHBONUSPOINTS, true);
+            return rentalSession.addTransaction(new Transaction(customer, movie, TransactionType.RENTAMOVIEANDPAYWITHBONUSPOINTS, true));
         }
 
-        return new Transaction(customer, movie, TransactionType.RENTAMOVIEANDPAYWITHBONUSPOINTS, false);
+        return rentalSession.addTransaction(new Transaction(customer, movie, TransactionType.RENTAMOVIEANDPAYWITHBONUSPOINTS_FAIL, false));
     }
 
     @Override
-    public Transaction returnAMovie(Movie movie) {
-        return returnAMovie(movie, false);
+    public RentalSession returnAMovie(Movie movie, RentalSession rentalSession) {
+
+        return returnAMovie(movie, false, rentalSession);
     }
 
     @Override
-    public Transaction returnAMovie(Movie movie, boolean overtimePaid) {
+    public RentalSession returnAMovie(Movie movie, boolean overtimePaid, RentalSession rentalSession) {
         if(timeService.calculateOvertimeInDays(movie)==0 || overtimePaid == true){
             resetMovie(movie);
-            return new Transaction(null, movie, TransactionType.RETURNED, true);
+            return rentalSession.addTransaction(new Transaction(null, movie, TransactionType.RETURNED, true));
         } else {
-            return new Transaction(movie.getItemHolder(), movie, TransactionType.RETURNOVERTIMENOTPAID, false);
+            return rentalSession.addTransaction(new Transaction(movie.getItemHolder(), movie, TransactionType.RETURNOVERTIMENOTPAID, false));
         }
+    }
+
+    @Override
+    public RentalSession beginRentalSession() {
+        RentalSession rentalSession = new RentalSession();
+        return rentalSession;
+    }
+
+    @Override
+    public RentalSession finishRentalSession(RentalSession rentalSession) {
+        rentalSession.finish();
+        return rentalSession;
     }
 
     private Movie resetMovie(Movie movie){
