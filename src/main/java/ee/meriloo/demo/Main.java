@@ -6,6 +6,7 @@ import ee.meriloo.items.MovieType;
 import ee.meriloo.services.Interfaces.*;
 import ee.meriloo.services.InventoryServiceImpl;
 import ee.meriloo.services.SimpleParserService;
+import ee.meriloo.transaction.RentalSession;
 import ee.meriloo.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -53,7 +54,8 @@ public class Main {
         //main.changeType();
         //main.listAllFilms();
         //main.listAllFilmsInStore();
-        main.rentOutAndcalculatePriceOfRental();
+        //main.rentOutAndcalculatePriceOfRental();
+        main.returningFilmsLate();
     }
 
 
@@ -197,37 +199,73 @@ public class Main {
         Movie movie2 = new Movie("Spider man", MovieType.UNKNOWN);
         Movie movie3 = new Movie("Spider man 2", MovieType.UNKNOWN);
         Movie movie4 = new Movie("Out of africa", MovieType.UNKNOWN);
-        movieRentalService.rentAMovie(movie1, customer, 1);
-        movieRentalService.rentAMovie(movie2, customer, 5);
-        movieRentalService.rentAMovie(movie3, customer, 2);
-        movieRentalService.rentAMovie(movie4, customer, 7);
+        RentalSession rentalSession = movieRentalService.beginRentalSession();
+        movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie1), customer, 1, rentalSession);
+        movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie2), customer, 5, rentalSession);
+        movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie3), customer, 2, rentalSession);
+        movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie4), customer, 7, rentalSession);
+        movieRentalService.finishRentalSession(rentalSession);
+
+        String output = parserService.parseRentalSession(rentalSession);
+        System.out.println(output);
 
     }
 
     private void returningFilmsLate(){
         System.out.println();
         System.out.println("-------------------------------------------------------------");
-        System.out.println("Add a film");
+        System.out.println("Returning Films Late");
         System.out.println("--------------------------------------------------------------");
         System.out.println();
         inventoryService.resetInventory();
 
+        Set<Movie> movieDB = simulatorService.generateMovieDB4();
+        inventoryService.setInventory(movieDB);
+        System.out.println("* Generated new inventory (DB4)");
+
+        Set<Movie> inStoreMovies = inventoryService.getAllMoviesInStore();
+        System.out.println("* List all films in store: \n\n" + parserService.parseListOfMovies(inStoreMovies));
+
+        Customer customer = new Customer("Mary");
+        Movie movie1 = new Movie("Matrix 11", MovieType.UNKNOWN);
+        Movie movie2 = new Movie("Spider man", MovieType.UNKNOWN);
+        //Movie movie3 = new Movie("Spider man 2", MovieType.UNKNOWN);
+        //Movie movie4 = new Movie("Out of africa", MovieType.UNKNOWN);
+        RentalSession rentalSession = movieRentalService.beginRentalSession();
+        movie1 = inventoryService.getMovieFromInventory(movie1);
+        movie2 = inventoryService.getMovieFromInventory(movie2);
+        movieRentalService.rentAMovie(movie1, customer, 1, rentalSession);
+        movieRentalService.rentAMovie(movie2, customer, 5, rentalSession);
+        //movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie3), customer, 2, rentalSession);
+        //movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie4), customer, 7, rentalSession);
+        movieRentalService.finishRentalSession(rentalSession);
+
+        rentalSession = movieRentalService.beginRentalSession();
+        simulatorService.overtimeGenerator(movie1, 2);
+        simulatorService.overtimeGenerator(movie2, 1);
+        movieRentalService.returnAMovie(movie1, rentalSession);
+        movieRentalService.returnAMovie(movie2, rentalSession);
+        movieRentalService.finishRentalSession(rentalSession);
+
+        String output = parserService.parseRentalSession(rentalSession);
+        System.out.println(output);
     }
 
     private void rentingWithBonusPoints(){
         System.out.println();
         System.out.println("-------------------------------------------------------------");
-        System.out.println("Add a film");
+        System.out.println("Renting With Bonus Points");
         System.out.println("--------------------------------------------------------------");
         System.out.println();
         inventoryService.resetInventory();
 
+        
     }
 
     private void keepTrackOfBonusPoints(){
         System.out.println();
         System.out.println("-------------------------------------------------------------");
-        System.out.println("Add a film");
+        System.out.println("Keep Track Of Bonus Points");
         System.out.println("--------------------------------------------------------------");
         System.out.println();
         inventoryService.resetInventory();
