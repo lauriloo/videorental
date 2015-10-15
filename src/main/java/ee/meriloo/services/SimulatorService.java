@@ -1,4 +1,4 @@
-package ee.meriloo.demo;
+package ee.meriloo.services;
 
 import ee.meriloo.clients.Customer;
 import ee.meriloo.items.Movie;
@@ -6,14 +6,14 @@ import ee.meriloo.items.MovieType;
 import ee.meriloo.services.SimpleTimeService;
 import ee.meriloo.services.enums.RentableState;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 /**
  * Created by Lauri on 11.10.2015.
  */
-@Component
+@Service
 public class SimulatorService {
 
 
@@ -80,9 +80,7 @@ public class SimulatorService {
         Movie movie = new Movie(title, type);
 
         Date date = new Date();
-        //date = movieRentalService.daysAndHoursAdder(date, -daysFromNow, 10);
         movie.setRentBeginTime(date);
-        //movie.setRentEndTime(date);
         movie.setRentOutTimeInDays(daysFromNow);
 
         return movie;
@@ -110,7 +108,6 @@ public class SimulatorService {
         overtimeInDays = overtimeInDays + (int) movie.getRentOutTimeInDays();
         Date begin = new Date();
         Date end = timeService.daysAndHoursAdder(begin, overtimeInDays, -1);
-        //movie.setRentOutTimeInDays(0);
         movie.setRentBeginTime(begin);
         movie.setRentEndTime(end);
         return movie;
