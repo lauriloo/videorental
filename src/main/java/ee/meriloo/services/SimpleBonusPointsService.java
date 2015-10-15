@@ -20,13 +20,15 @@ public class SimpleBonusPointsService implements BonuspointsService {
 
     @Override
     public void addBonusPoints(BonusPointable customer, Movie movie) {
-        long bonusPoints = calculateBonusPoints(movie.getMovieType());
-        customer.addBonusPoints(bonusPoints);
+        if(customer != null && movie != null){
+            long bonusPoints = calculateBonusPoints(movie.getMovieType());
+            customer.addBonusPoints(bonusPoints);
+        }
     }
 
     @Override
     public boolean useBonusPoints(BonusPointable customer, Movie movie) {
-        if(isBonusPointsChargeable(customer, movie)){
+        if(customer != null && isBonusPointsChargeable(customer, movie)){
             customer.useBonusPoints(CHARGEABLE_BONUS_POINTS);
             return true;
         }
@@ -35,7 +37,8 @@ public class SimpleBonusPointsService implements BonuspointsService {
 
     @Override
     public boolean isBonusPointsChargeable(BonusPointable customer, Movie movie) {
-        if(movie.getMovieType() == MovieType.NEW_RELEASE && customer.getBonusPoints() >= CHARGEABLE_BONUS_POINTS){
+        if(customer != null && movie != null && movie.getMovieType() == MovieType.NEW_RELEASE &&
+                customer.getBonusPoints() >= CHARGEABLE_BONUS_POINTS){
             return true;
         }
         return false;
