@@ -253,16 +253,20 @@ public class SimpleDemoService implements DemoService {
         System.out.println("Befor renting: " + parserService.parseBonusPoints(customer));
         RentalSession rentalSession = movieRentalService.beginRentalSession();
         movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie1), customer, 1, rentalSession);
-        System.out.println("Rented out movie: \""+ movie1.getTitle() + "\", " + movie1.getMovieType().getType());
+        System.out.println("Rented out movie: \""+ movie1.getTitle() + "\", " +
+                inventoryService.getMovieFromInventory(movie1).getMovieType().getType());
         System.out.println(parserService.parseBonusPoints(customer));
         movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie2), customer, 5, rentalSession);
-        System.out.println("Rented out movie: \""+ movie2.getTitle() + "\", " + movie2.getMovieType().getType());
+        System.out.println("Rented out movie: \""+ movie2.getTitle() + "\", " +
+                inventoryService.getMovieFromInventory(movie2).getMovieType().getType());
         System.out.println(parserService.parseBonusPoints(customer));
         movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie3), customer, 2, rentalSession);
-        System.out.println("Rented out movie: \""+ movie3.getTitle() + "\", " + movie3.getMovieType().getType());
+        System.out.println("Rented out movie: \""+ movie3.getTitle() + "\", " +
+                inventoryService.getMovieFromInventory(movie3).getMovieType().getType());
         System.out.println(parserService.parseBonusPoints(customer));
         movieRentalService.rentAMovie(inventoryService.getMovieFromInventory(movie4), customer, 7, rentalSession);
-        System.out.println("Rented out movie: \""+ movie4.getTitle() + "\", " + movie4.getMovieType().getType());
+        System.out.println("Rented out movie: \""+ movie4.getTitle() + "\", " +
+                inventoryService.getMovieFromInventory(movie4).getMovieType().getType());
         System.out.println(parserService.parseBonusPoints(customer));
         movieRentalService.finishRentalSession(rentalSession);
 
