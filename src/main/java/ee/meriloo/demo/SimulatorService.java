@@ -26,7 +26,7 @@ public class SimulatorService {
         movieDB.add(generateMovie("Matrix", MovieType.NEW_RELEASE, 1));
         movieDB.add(generateMovie("Spider man", MovieType.REGULAR, 5));
         movieDB.add(generateMovie("Spider man 2", MovieType.REGULAR, 2));
-        movieDB.add(generateMovie("Put of Africa", MovieType.OLD_FILM, 7));
+        movieDB.add(generateMovie("Out of africa", MovieType.OLD_FILM, 7));
 
         return movieDB;
     }
@@ -38,7 +38,7 @@ public class SimulatorService {
 
         Movie movie1 = generateMovie("Matrix", MovieType.NEW_RELEASE, 1);
         Movie movie2 = generateMovie("Spider man", MovieType.REGULAR, 5);
-        Movie movie3 = generateMovie("Put of Africa", MovieType.OLD_FILM, 7);
+        Movie movie3 = generateMovie("Out of africa", MovieType.OLD_FILM, 7);
 
         overtimeGenerator(movie1, 2);
         overtimeGenerator(movie2, 1);
@@ -57,7 +57,7 @@ public class SimulatorService {
         movieDB.add(generateMovie("Matrix", MovieType.NEW_RELEASE, new Customer("John"), RentableState.RENTED_OUT));
         movieDB.add(generateMovie("Spider man", MovieType.REGULAR));
         movieDB.add(generateMovie("Spider man 2", MovieType.REGULAR));
-        movieDB.add(generateMovie("Put of Africa", MovieType.OLD_FILM));
+        movieDB.add(generateMovie("Out of africa", MovieType.OLD_FILM));
 
         return movieDB;
     }
@@ -68,7 +68,7 @@ public class SimulatorService {
         movieDB.add(generateMovie("Matrix 11", MovieType.NEW_RELEASE));
         movieDB.add(generateMovie("Spider man", MovieType.REGULAR));
         movieDB.add(generateMovie("Spider man 2", MovieType.REGULAR));
-        movieDB.add(generateMovie("Put of Africa", MovieType.OLD_FILM));
+        movieDB.add(generateMovie("Out of africa", MovieType.OLD_FILM));
 
         return movieDB;
     }
@@ -106,7 +106,7 @@ public class SimulatorService {
         return movie;
     }
 
-    private Movie overtimeGenerator(Movie movie,int overtimeInDays){
+    public Movie overtimeGenerator(Movie movie,int overtimeInDays){
         overtimeInDays = overtimeInDays + (int) movie.getRentOutTimeInDays();
         Date begin = new Date();
         Date end = timeService.daysAndHoursAdder(begin, overtimeInDays, -1);
